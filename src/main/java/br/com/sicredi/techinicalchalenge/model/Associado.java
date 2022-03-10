@@ -8,18 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 public class Associado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String cpf;
 
 }
+
+

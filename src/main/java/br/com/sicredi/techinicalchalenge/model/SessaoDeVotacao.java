@@ -3,19 +3,18 @@ package br.com.sicredi.techinicalchalenge.model;
 import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @Entity
 public class SessaoDeVotacao {
 
@@ -39,5 +38,6 @@ public class SessaoDeVotacao {
     @Builder.Default
     @OneToMany(mappedBy = "sessaoDeVotacao", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Voto> votos = new LinkedHashSet<>();
+
 
 }

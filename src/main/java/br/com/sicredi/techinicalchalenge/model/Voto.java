@@ -6,12 +6,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Objects;
 
-
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @Entity
 public class Voto {
 
@@ -37,6 +36,7 @@ public class Voto {
         this.valorVoto = valorVoto.getValue();
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,3 +50,4 @@ public class Voto {
         return Objects.hash(autor, sessaoDeVotacao);
     }
 }
+

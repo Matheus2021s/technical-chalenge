@@ -3,14 +3,10 @@ package br.com.sicredi.techinicalchalenge.dto.pauta;
 import br.com.sicredi.techinicalchalenge.model.Pauta;
 import lombok.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class PautaResquest {
     private Long id;
     private String nome;

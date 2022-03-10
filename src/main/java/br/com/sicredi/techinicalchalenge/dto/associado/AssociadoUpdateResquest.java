@@ -8,14 +8,13 @@ import lombok.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class AssociadoUpdateResquest {
     private Long id;
-    private String nome;
+    private String cpf;
 
     public AssociadoUpdateResquest(Associado associado) {
         this.id = associado.getId();
@@ -28,7 +27,9 @@ public class AssociadoUpdateResquest {
     public Associado convert() {
         return Associado.builder()
                 .id(getId())
+                .cpf(getCpf())
                 .build();
+
     }
 }
 

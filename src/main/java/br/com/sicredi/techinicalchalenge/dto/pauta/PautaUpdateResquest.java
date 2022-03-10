@@ -7,11 +7,10 @@ import lombok.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class PautaUpdateResquest {
     private Long id;
     private String nome;
