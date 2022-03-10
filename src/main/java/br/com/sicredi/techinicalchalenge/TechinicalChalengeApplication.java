@@ -39,30 +39,5 @@ public class TechinicalChalengeApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        Pauta pauta = this.pautaService.create(
-                Pauta.builder()
-                        .nome("PAUTA TESTE INICAL")
-                        .build());
-
-        SessaoDeVotacao sessaoDeVotacao = this.sessaoDeVotacaoService.create(
-                SessaoDeVotacao.builder()
-                        .pauta(pauta)
-                        .status(StatusSessao.ABERTA)
-                        .horarioInicial(LocalDateTime.now())
-                        .build());
-
-        Associado associado = this.associadoService.create(
-                Associado.builder()
-                        .cpf("825.435.080-90")
-                        .build());
-
-
-        this.votoService.create(
-                Voto.builder()
-                        .autor(associado)
-                        .sessaoDeVotacao(sessaoDeVotacao)
-                        .valorVoto("Sim")
-                        .build());
     }
 }

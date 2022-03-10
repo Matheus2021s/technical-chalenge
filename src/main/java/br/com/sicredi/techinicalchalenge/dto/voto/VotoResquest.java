@@ -3,11 +3,11 @@ package br.com.sicredi.techinicalchalenge.dto.voto;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import lombok.*;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class VotoResquest {
     private Long id;
 

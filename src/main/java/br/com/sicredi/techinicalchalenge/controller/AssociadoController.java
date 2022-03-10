@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("associado")
+@RequestMapping("/associado")
 public class AssociadoController {
 
     private final AssociadoService associadoService;

@@ -1,21 +1,20 @@
 package br.com.sicredi.techinicalchalenge.dto.voto;
 
 
-import br.com.sicredi.techinicalchalenge.dto.voto.VotoResponse;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
-@Setter
 public class VotoUpdateResquest {
     private Long id;
-    private String nome;
+    private String value;
 
     public VotoUpdateResquest(Voto voto) {
         this.id = voto.getId();

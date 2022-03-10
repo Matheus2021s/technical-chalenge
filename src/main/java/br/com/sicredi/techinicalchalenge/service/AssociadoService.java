@@ -1,9 +1,6 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.Associado;
-import br.com.sicredi.techinicalchalenge.model.Associado;
-import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
-import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.AssociadoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

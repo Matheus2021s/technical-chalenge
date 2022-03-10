@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @Setter
+@Builder
 public class VotoResponse {
+
     private Long id;
 
     public VotoResponse(Voto voto) {
@@ -20,5 +21,11 @@ public class VotoResponse {
 
     public static List<VotoResponse> toListResponse(List<Voto> listVotos) {
         return listVotos.stream().map(VotoResponse::new).collect(Collectors.toList());
+    }
+
+    public Voto convert() {
+        return Voto.builder()
+                .id(getId())
+                .build();
     }
 }
