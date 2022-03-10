@@ -9,9 +9,9 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 public class Pauta {
 
@@ -19,6 +19,6 @@ public class Pauta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private String nome;
 
 }

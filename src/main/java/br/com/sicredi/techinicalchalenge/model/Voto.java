@@ -4,6 +4,7 @@ import br.com.sicredi.techinicalchalenge.model.enums.TipoValorVoto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Setter
@@ -23,6 +24,9 @@ public class Voto {
     @OneToOne
     private Associado autor;
 
+    @ManyToOne
+    @JoinColumn(name = "sessao_de_votacao_id")
+    private SessaoDeVotacao sessaoDeVotacao;
 
 
     public TipoValorVoto getValorVoto() {
@@ -33,4 +37,16 @@ public class Voto {
         this.valorVoto = valorVoto.getValue();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Voto voto = (Voto) o;
+        return autor.equals(voto.autor) && sessaoDeVotacao.equals(voto.sessaoDeVotacao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(autor, sessaoDeVotacao);
+    }
 }

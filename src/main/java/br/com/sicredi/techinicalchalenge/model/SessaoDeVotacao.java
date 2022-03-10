@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -24,9 +27,17 @@ public class SessaoDeVotacao {
     private Pauta pauta;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private StatusSessao status;
 
     @NotNull
-    private LocalDateTime horaInicial;
+    private LocalDateTime horarioInicial;
+
+    @NotNull
+    private LocalDateTime horarioFinal;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "sessaoDeVotacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Voto> votos = new LinkedHashSet<>();
 
 }
