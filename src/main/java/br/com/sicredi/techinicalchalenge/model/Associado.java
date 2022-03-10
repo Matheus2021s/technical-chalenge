@@ -1,9 +1,6 @@
 package br.com.sicredi.techinicalchalenge.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +12,7 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Associado {
 
@@ -22,6 +20,6 @@ public class Associado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    private String name;
 
 }

@@ -3,7 +3,6 @@ package br.com.sicredi.techinicalchalenge.model.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
 public enum TipoValorVoto {
 
@@ -11,6 +10,11 @@ public enum TipoValorVoto {
     NAO("Não");
 
     private String value;
+
+
+    public String getValue() {
+        return value;
+    }
 
     public static TipoValorVoto getValue(String voto){
         for (TipoValorVoto t : TipoValorVoto.values()){
