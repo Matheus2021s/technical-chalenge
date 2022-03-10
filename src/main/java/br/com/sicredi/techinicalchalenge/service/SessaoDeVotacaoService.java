@@ -1,6 +1,7 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
+import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.SessaoDeVotacaoRepository;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,8 @@ public class SessaoDeVotacaoService {
         return this.sessaoDeVotacaoRepository.findAll();
     }
 
-    public SessaoDeVotacao findById(Long id){
-        Optional<SessaoDeVotacao> optional = this.sessaoDeVotacaoRepository.findById(id);
-        if (optional.isPresent()){
-            return optional.get();
-        }
-        throw  new IllegalArgumentException("SessaoDeVotacao Not found");
+    public Optional<SessaoDeVotacao> findById(Long id){
+        return this.sessaoDeVotacaoRepository.findById(id);
     }
 
     @Transactional
@@ -37,23 +34,14 @@ public class SessaoDeVotacaoService {
 
 
     @Transactional
-    public Voto SessaoDeVotacao(SessaoDeVotacao newObjectData) {
-        Optional<SessaoDeVotacao> optional = this.sessaoDeVotacaoRepository.findById(newObjectData.getId());
-        if ( optional.isPresent() ) {
-            SessaoDeVotacao sessaoDeVotacao = optional.get();
-            sessaoDeVotacao.setHorarioInicial( sessaoDeVotacao.getHorarioInicial() );
-            sessaoDeVotacao.setHorarioFinal( sessaoDeVotacao.getHorarioFinal() );
-            sessaoDeVotacao.setStatus(sessaoDeVotacao.getStatus());
-        }
-        throw  new IllegalArgumentException("SessaoDeVotacao Not found");
+    public void update( SessaoDeVotacao olderObjectData ,  SessaoDeVotacao newObjectData) {
+        olderObjectData.setHorarioInicial(newObjectData.getHorarioInicial());
+        olderObjectData.setHorarioFinal(newObjectData.getHorarioInicial());
+        olderObjectData.setStatus(newObjectData.getStatus());
     }
 
     @Transactional
-    public SessaoDeVotacao delete(SessaoDeVotacao sessaoDeVotacao){
-        Optional<SessaoDeVotacao> optional = this.sessaoDeVotacaoRepository.findById(sessaoDeVotacao.getId());
-        if ( optional.isPresent() ) {
-            this.sessaoDeVotacaoRepository.delete(optional.get());
-        }
-        throw  new IllegalArgumentException("Voto Not found");
+    public void delete(Long sessaoDeVotacaoId){
+        this.sessaoDeVotacaoRepository.deleteById(sessaoDeVotacaoId);
     }
 }

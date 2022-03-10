@@ -1,11 +1,14 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.Associado;
+import br.com.sicredi.techinicalchalenge.model.Associado;
+import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.AssociadoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,12 +21,12 @@ public class AssociadoService {
     }
 
 
-    public Associado findById(Long id){
-        Optional<Associado> optional = this.associadoRepository.findById(id);
-        if (optional.isPresent()){
-            return optional.get();
-        }
-        throw  new IllegalArgumentException("Associado Not found");
+    public List<Associado> findAll(){
+        return this.associadoRepository.findAll();
+    }
+
+    public Optional<Associado> findById(Long id){
+        return this.associadoRepository.findById(id);
     }
 
     @Transactional
@@ -33,20 +36,12 @@ public class AssociadoService {
 
 
     @Transactional
-    public Voto Associado(Associado newObjectData) {
-        Optional<Associado> optional = this.associadoRepository.findById(newObjectData.getId());
-        if ( optional.isPresent() ) {
-            Associado associado = optional.get();
-        }
-        throw  new IllegalArgumentException("Associado Not found");
+    public void update( Associado olderObjectData ,  Associado newObjectData) {
+        olderObjectData.setCpf(newObjectData.getCpf());
     }
 
     @Transactional
-    public Associado delete(Associado associado){
-        Optional<Associado> optional = this.associadoRepository.findById(associado.getId());
-        if ( optional.isPresent() ) {
-            this.associadoRepository.delete(optional.get());
-        }
-        throw  new IllegalArgumentException("Associado Not found");
+    public void delete(Long associadoId){
+        this.associadoRepository.deleteById(associadoId);
     }
 }

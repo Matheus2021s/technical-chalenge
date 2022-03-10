@@ -54,7 +54,7 @@ public class TechinicalChalengeApplication implements CommandLineRunner {
 
         Associado associado = this.associadoService.create(
                 Associado.builder()
-                        .name("ASSOCIADO TESTE INICIAL")
+                        .cpf("825.435.080-90")
                         .build());
 
 

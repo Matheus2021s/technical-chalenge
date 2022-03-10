@@ -1,11 +1,11 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.Pauta;
-import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.PautaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,12 +17,12 @@ public class PautaService {
         this.pautaRepository = pautaRepository;
     }
 
-    public Pauta findById(Long id){
-        Optional<Pauta> optional = this.pautaRepository.findById(id);
-        if (optional.isPresent()){
-            return optional.get();
-        }
-        throw  new IllegalArgumentException("Pauta Not found");
+    public List<Pauta> findAll(){
+        return this.pautaRepository.findAll();
+    }
+
+    public Optional<Pauta> findById(Long id){
+        return this.pautaRepository.findById(id);
     }
 
     @Transactional
@@ -32,21 +32,12 @@ public class PautaService {
 
 
     @Transactional
-    public Voto Pauta(Pauta newObjectData) {
-        Optional<Pauta> optional = this.pautaRepository.findById(newObjectData.getId());
-        if ( optional.isPresent() ) {
-            Pauta pauta = optional.get();
-            pauta.setNome(newObjectData.getNome());
-        }
-        throw  new IllegalArgumentException("Pauta Not found");
+    public void update( Pauta olderObjectData ,  Pauta newObjectData) {
+        olderObjectData.setNome(newObjectData.getNome());
     }
 
     @Transactional
-    public Pauta delete(Pauta pauta){
-        Optional<Pauta> optional = this.pautaRepository.findById(pauta.getId());
-        if ( optional.isPresent() ) {
-            this.pautaRepository.delete(optional.get());
-        }
-        throw  new IllegalArgumentException("Pauta Not found");
+    public void delete(Long pautaId){
+        this.pautaRepository.deleteById(pautaId);
     }
 }

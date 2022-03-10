@@ -1,6 +1,7 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.Voto;
+import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.VotoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +18,15 @@ public class VotoService {
         this.votoRepository = votoRepository;
     }
 
+
+
+
     public List<Voto> findAll(){
         return this.votoRepository.findAll();
     }
 
-    public Voto findById(Long id){
-        Optional<Voto> optional = this.votoRepository.findById(id);
-        if (optional.isPresent()){
-            return optional.get();
-        }
-        throw  new IllegalArgumentException("Voto Not found");
+    public Optional<Voto> findById(Long id){
+        return this.votoRepository.findById(id);
     }
 
     @Transactional
@@ -36,23 +36,14 @@ public class VotoService {
 
 
     @Transactional
-    public Voto update(Voto newObjectData) {
-        Optional<Voto> optional = this.votoRepository.findById(newObjectData.getId());
-        if ( optional.isPresent() ) {
-            Voto voto = optional.get();
-            voto.setValorVoto( newObjectData.getValorVoto());
-        }
-        throw  new IllegalArgumentException("Voto Not found");
+    public void update( Voto olderObjectData ,  Voto newObjectData) {
+        olderObjectData.setValorVoto(newObjectData.getValorVoto());
+
     }
 
     @Transactional
-    public Voto delete(Voto voto){
-        Optional<Voto> optional = this.votoRepository.findById(voto.getId());
-        if ( optional.isPresent() ) {
-            this.votoRepository.delete(optional.get());
-        }
-        throw  new IllegalArgumentException("Voto Not found");
+    public void delete(Long votoId){
+        this.votoRepository.deleteById(votoId);
     }
-
 
 }
