@@ -1,7 +1,6 @@
 package br.com.sicredi.techinicalchalenge.model.enums;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 @AllArgsConstructor
 public enum TipoValorVoto {

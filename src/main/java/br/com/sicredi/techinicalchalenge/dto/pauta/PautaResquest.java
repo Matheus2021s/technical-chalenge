@@ -1,7 +1,10 @@
 package br.com.sicredi.techinicalchalenge.dto.pauta;
 
 import br.com.sicredi.techinicalchalenge.model.Pauta;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor

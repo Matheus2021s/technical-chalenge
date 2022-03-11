@@ -3,7 +3,6 @@ package br.com.sicredi.techinicalchalenge.service;
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
 import br.com.sicredi.techinicalchalenge.repository.SessaoDeVotacaoRepository;
-import br.com.sicredi.techinicalchalenge.thread.AtualizacaoStatusThread;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

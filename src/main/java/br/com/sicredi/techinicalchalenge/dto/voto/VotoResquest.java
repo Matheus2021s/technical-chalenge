@@ -1,18 +1,9 @@
 package br.com.sicredi.techinicalchalenge.dto.voto;
 
-import br.com.sicredi.techinicalchalenge.dto.associado.AssociadoResponse;
 import br.com.sicredi.techinicalchalenge.dto.associado.AssociadoResquest;
-import br.com.sicredi.techinicalchalenge.dto.associado.AssociadoUpdateResquest;
 import br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao.SessaoDeVotacaoResquest;
-import br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao.SessaoDeVotacaoUpdateResquest;
-import br.com.sicredi.techinicalchalenge.model.Associado;
-import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import lombok.*;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Getter
 @Setter

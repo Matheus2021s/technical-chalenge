@@ -1,14 +1,15 @@
 package br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao;
 
 
-import br.com.sicredi.techinicalchalenge.dto.pauta.PautaResquest;
 import br.com.sicredi.techinicalchalenge.dto.pauta.PautaUpdateResquest;
-import br.com.sicredi.techinicalchalenge.dto.voto.VotoResponse;
 import br.com.sicredi.techinicalchalenge.dto.voto.VotoUpdateResquest;
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;

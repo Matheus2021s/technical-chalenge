@@ -1,9 +1,11 @@
 package br.com.sicredi.techinicalchalenge.dto.associado;
 
 
-import br.com.sicredi.techinicalchalenge.dto.associado.AssociadoResponse;
 import br.com.sicredi.techinicalchalenge.model.Associado;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
