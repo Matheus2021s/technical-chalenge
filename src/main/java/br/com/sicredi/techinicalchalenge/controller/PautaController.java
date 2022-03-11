@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequestMapping("pauta")
 public class PautaController {
 
-    public static final Logger LOGGER = LogManager.getLogger(PautaController.class.getName());
+    public static final Logger LOGGER = LogManager.getLogger( PautaController.class.getName() );
 
     private final PautaService pautaService;
 
@@ -68,7 +68,7 @@ public class PautaController {
     public ResponseEntity<PautaResponse> create(@RequestBody PautaResquest pautaResquest,  RequestEntity requestEntity) throws URISyntaxException {
 
         LOGGER.info( "Request: " + requestEntity );
-        LOGGER.info( "Body: " + pautaResquest );
+        LOGGER.info( "Body: " + pautaResquest.toString() );
 
 
         Pauta pauta = this.pautaService.create( pautaResquest.convert() );
@@ -87,7 +87,7 @@ public class PautaController {
     public ResponseEntity<PautaResponse> update(@RequestBody PautaUpdateResquest pautaUpdateResquest,  RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
-        LOGGER.info( "Body: " + pautaUpdateResquest );
+        LOGGER.info( "Body: " + pautaUpdateResquest.toString() );
 
 
         Pauta newData = pautaUpdateResquest.convert();

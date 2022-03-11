@@ -33,8 +33,7 @@ public class SessaoDeVotacaoService {
         sessaoDeVotacao.setHorarioInicial(LocalDateTime.now());
         sessaoDeVotacao.setHorarioFinal(LocalDateTime.now().plusSeconds(60));
         sessaoDeVotacao.setStatus(StatusSessao.ABERTA);
-        SessaoDeVotacao sessaoCriada = this.sessaoDeVotacaoRepository.save(sessaoDeVotacao);
-        return sessaoCriada;
+        return this.sessaoDeVotacaoRepository.save(sessaoDeVotacao);
     }
 
 

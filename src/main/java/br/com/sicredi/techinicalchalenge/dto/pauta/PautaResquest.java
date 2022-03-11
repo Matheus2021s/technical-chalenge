@@ -1,15 +1,14 @@
 package br.com.sicredi.techinicalchalenge.dto.pauta;
 
 import br.com.sicredi.techinicalchalenge.model.Pauta;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString@Data
 public class PautaResquest {
     private Long id;
     private String nome;

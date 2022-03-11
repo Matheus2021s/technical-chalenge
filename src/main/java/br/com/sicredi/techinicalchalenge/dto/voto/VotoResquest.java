@@ -7,9 +7,10 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class VotoResquest {
     private Long id;
     private String valorVoto;

@@ -39,9 +39,11 @@ public class SessaoDeVotacao {
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "sessaoDeVotacao", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Voto> votos = new LinkedHashSet<>();
 
-    private Integer quantidadeVotosSim;
+    @Builder.Default
+    private Integer quantidadeVotosSim = 0;
 
-    private Integer quantidadeVotosNao;
+    @Builder.Default
+    private Integer quantidadeVotosNao = 0;
 
 
 }

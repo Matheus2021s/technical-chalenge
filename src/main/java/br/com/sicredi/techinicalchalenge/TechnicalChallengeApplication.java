@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @SpringBootApplication
-public class TechinicalChalengeApplication implements CommandLineRunner {
+public class TechnicalChallengeApplication implements CommandLineRunner {
 
     private VotoService votoService;
     private PautaService pautaService;
@@ -20,7 +20,7 @@ public class TechinicalChalengeApplication implements CommandLineRunner {
     private AssociadoService associadoService;
     private AtualizacaoStatusThread atualizacaoStatusThread;
 
-    public TechinicalChalengeApplication(VotoService votoService, PautaService pautaService, SessaoDeVotacaoService sessaoDeVotacaoService, AssociadoService associadoService, AtualizacaoStatusThread atualizacaoStatusThread) {
+    public TechnicalChallengeApplication(VotoService votoService, PautaService pautaService, SessaoDeVotacaoService sessaoDeVotacaoService, AssociadoService associadoService, AtualizacaoStatusThread atualizacaoStatusThread) {
         this.votoService = votoService;
         this.pautaService = pautaService;
         this.sessaoDeVotacaoService = sessaoDeVotacaoService;
@@ -29,7 +29,7 @@ public class TechinicalChalengeApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(TechinicalChalengeApplication.class, args);
+        SpringApplication.run(TechnicalChallengeApplication.class, args);
     }
 
     @Override

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class SessaoDeVotacaoResponse {
     private Long id;
     private PautaResponse pauta = new PautaResponse();

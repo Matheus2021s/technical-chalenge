@@ -2,18 +2,17 @@ package br.com.sicredi.techinicalchalenge.dto.associado;
 
 
 import br.com.sicredi.techinicalchalenge.model.Associado;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class AssociadoUpdateResquest {
     private Long id;
     private String cpf;

@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class SessaoDeVotacaoResquest {
     private Long id;
     private PautaResquest pauta = new PautaResquest();

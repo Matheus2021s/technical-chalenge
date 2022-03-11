@@ -10,9 +10,10 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class VotoUpdateResquest {
     private Long id;
     private String valorVoto;

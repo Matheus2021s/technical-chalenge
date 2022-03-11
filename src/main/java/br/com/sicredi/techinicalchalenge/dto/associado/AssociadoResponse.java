@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class AssociadoResponse {
     private Long id;
     private String cpf;

@@ -6,10 +6,7 @@ import br.com.sicredi.techinicalchalenge.dto.voto.VotoUpdateResquest;
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
@@ -17,10 +14,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SessaoDeVotacaoUpdateResquest {
     private Long id;
     private PautaUpdateResquest pauta = new PautaUpdateResquest();
