@@ -22,4 +22,11 @@ public class PautaResponse {
     public static List<PautaResponse> toListResponse(List<Pauta> listPautas) {
         return listPautas.stream().map(PautaResponse::new).collect(Collectors.toList());
     }
+
+    public Pauta convert() {
+        return Pauta.builder()
+                .id(getId())
+                .nome(getNome())
+                .build();
+    }
 }

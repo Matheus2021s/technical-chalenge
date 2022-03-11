@@ -36,8 +36,12 @@ public class SessaoDeVotacao {
     private LocalDateTime horarioFinal;
 
     @Builder.Default
-    @OneToMany(mappedBy = "sessaoDeVotacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "sessaoDeVotacao", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Voto> votos = new LinkedHashSet<>();
+
+    private Integer quantidadeVotosSim;
+
+    private Integer quantidadeVotosNao;
 
 
 }

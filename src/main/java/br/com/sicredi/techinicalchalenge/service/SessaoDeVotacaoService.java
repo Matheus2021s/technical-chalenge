@@ -1,12 +1,13 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
-import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
-import br.com.sicredi.techinicalchalenge.model.Voto;
+import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
 import br.com.sicredi.techinicalchalenge.repository.SessaoDeVotacaoRepository;
+import br.com.sicredi.techinicalchalenge.thread.AtualizacaoStatusThread;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public class SessaoDeVotacaoService {
         this.sessaoDeVotacaoRepository = sessaoDeVotacaoRepository;
     }
 
+
     public List<SessaoDeVotacao> findAll(){
         return this.sessaoDeVotacaoRepository.findAll();
     }
@@ -29,7 +31,11 @@ public class SessaoDeVotacaoService {
 
     @Transactional
     public SessaoDeVotacao create (SessaoDeVotacao sessaoDeVotacao){
-        return this.sessaoDeVotacaoRepository.save(sessaoDeVotacao);
+        sessaoDeVotacao.setHorarioInicial(LocalDateTime.now());
+        sessaoDeVotacao.setHorarioFinal(LocalDateTime.now().plusSeconds(60));
+        sessaoDeVotacao.setStatus(StatusSessao.ABERTA);
+        SessaoDeVotacao sessaoCriada = this.sessaoDeVotacaoRepository.save(sessaoDeVotacao);
+        return sessaoCriada;
     }
 
 

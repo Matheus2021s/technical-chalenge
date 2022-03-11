@@ -16,7 +16,7 @@ public enum TipoValorVoto {
         return value;
     }
 
-    public static TipoValorVoto getValue(String voto){
+    public static TipoValorVoto get(String voto){
         for (TipoValorVoto t : TipoValorVoto.values()){
             if (t.getValue().equals(voto))
                 return t;

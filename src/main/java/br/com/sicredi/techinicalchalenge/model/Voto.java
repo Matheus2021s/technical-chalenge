@@ -29,7 +29,7 @@ public class Voto {
 
 
     public TipoValorVoto getValorVoto() {
-        return TipoValorVoto.getValue(valorVoto);
+        return TipoValorVoto.get(this.valorVoto);
     }
 
     public void setValorVoto(TipoValorVoto valorVoto){

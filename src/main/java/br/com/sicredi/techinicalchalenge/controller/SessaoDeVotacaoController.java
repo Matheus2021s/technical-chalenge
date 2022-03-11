@@ -1,6 +1,5 @@
 package br.com.sicredi.techinicalchalenge.controller;
 
-import br.com.sicredi.techinicalchalenge.dto.pauta.PautaResponse;
 import br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao.SessaoDeVotacaoResponse;
 import br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao.SessaoDeVotacaoResquest;
 import br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao.SessaoDeVotacaoUpdateResquest;

@@ -3,6 +3,7 @@ package br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao;
 import br.com.sicredi.techinicalchalenge.dto.pauta.PautaResponse;
 import br.com.sicredi.techinicalchalenge.dto.pauta.PautaResquest;
 import br.com.sicredi.techinicalchalenge.dto.voto.VotoResponse;
+import br.com.sicredi.techinicalchalenge.dto.voto.VotoResquest;
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
 import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
@@ -20,30 +21,36 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SessaoDeVotacaoResquest {
     private Long id;
-    private PautaResquest pauta;
-    private StatusSessao status;
-    private LocalDateTime horarioInicial;
-    private LocalDateTime horarioFinal;
+    private PautaResquest pauta = new PautaResquest();
     @Builder.Default
-    private Set<VotoResponse> votos = new LinkedHashSet<>();
+    private Set<VotoResquest> votos = new LinkedHashSet<>();
 
     public SessaoDeVotacaoResquest(SessaoDeVotacao sessaoDeVotacao) {
         this.id = sessaoDeVotacao.getId();
+        this.pauta = new PautaResquest(sessaoDeVotacao.getPauta());
+        this.votos = composeVotosRequest(sessaoDeVotacao.getVotos());
+    }
+
+    private Set<VotoResquest> composeVotosRequest(Set<Voto> votos) {
+        return votos.stream().map(VotoResquest::new).collect(Collectors.toSet());
     }
 
     public SessaoDeVotacao convert() {
         return SessaoDeVotacao.builder()
                 .id(getId())
                 .pauta(getPauta().convert())
-                .status(getStatus())
-                .horarioInicial(getHorarioInicial())
-                .horarioFinal(getHorarioFinal())
                 .votos(composeVotos(getVotos()))
                 .build();
     }
 
-    private Set<Voto> composeVotos(Set<VotoResponse> votos) {
-        return votos.stream().map(VotoResponse::convert).collect(Collectors.toSet());
+    private Set<Voto> composeVotos(Set<VotoResquest> votos) {
+        return votos.stream().map(VotoResquest::convert).collect(Collectors.toSet());
     }
 
+    public SessaoDeVotacao convertWithoutVotos() {
+        return SessaoDeVotacao.builder()
+                .id(getId())
+                .pauta(getPauta().convert())
+                .build();
+    }
 }

@@ -1,10 +1,19 @@
 package br.com.sicredi.techinicalchalenge.dto.sessao_de_votacao;
 
 
+import br.com.sicredi.techinicalchalenge.dto.pauta.PautaResquest;
+import br.com.sicredi.techinicalchalenge.dto.pauta.PautaUpdateResquest;
+import br.com.sicredi.techinicalchalenge.dto.voto.VotoResponse;
+import br.com.sicredi.techinicalchalenge.dto.voto.VotoUpdateResquest;
 import br.com.sicredi.techinicalchalenge.model.SessaoDeVotacao;
+import br.com.sicredi.techinicalchalenge.model.Voto;
+import br.com.sicredi.techinicalchalenge.model.enums.StatusSessao;
 import lombok.*;
 
+import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
@@ -13,6 +22,12 @@ import java.util.stream.Collectors;
 @Builder
 public class SessaoDeVotacaoUpdateResquest {
     private Long id;
+    private PautaUpdateResquest pauta = new PautaUpdateResquest();
+    private StatusSessao status;
+    private LocalDateTime horarioInicial;
+    private LocalDateTime horarioFinal;
+    @Builder.Default
+    private Set<VotoUpdateResquest> votos = new LinkedHashSet<>();
 
     public SessaoDeVotacaoUpdateResquest(SessaoDeVotacao sessaoDeVotacao) {
         this.id = sessaoDeVotacao.getId();
@@ -25,6 +40,24 @@ public class SessaoDeVotacaoUpdateResquest {
     public SessaoDeVotacao convert() {
         return SessaoDeVotacao.builder()
                 .id(getId())
+                .pauta(getPauta().convert())
+                .status(getStatus())
+                .horarioInicial(getHorarioInicial())
+                .horarioFinal(getHorarioFinal())
+                .votos(composeVotos(getVotos()))
+                .build();
+    }
+    private Set<Voto> composeVotos(Set<VotoUpdateResquest> votos) {
+        return votos.stream().map(VotoUpdateResquest::convert).collect(Collectors.toSet());
+    }
+
+    public SessaoDeVotacao convertWithoutVotos() {
+        return SessaoDeVotacao.builder()
+                .id(getId())
+                .pauta(getPauta().convert())
+                .status(getStatus())
+                .horarioInicial(getHorarioInicial())
+                .horarioFinal(getHorarioFinal())
                 .build();
     }
 }

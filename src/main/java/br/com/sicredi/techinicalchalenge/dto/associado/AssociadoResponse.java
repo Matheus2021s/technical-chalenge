@@ -25,4 +25,10 @@ public class AssociadoResponse {
         return listAssociados.stream().map(AssociadoResponse::new).collect(Collectors.toList());
     }
 
+    public Associado convert() {
+        return Associado.builder()
+                .id(getId())
+                .cpf(getCpf())
+                .build();
+    }
 }

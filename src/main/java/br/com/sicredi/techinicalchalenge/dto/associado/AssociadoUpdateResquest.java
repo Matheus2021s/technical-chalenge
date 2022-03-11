@@ -18,6 +18,7 @@ public class AssociadoUpdateResquest {
 
     public AssociadoUpdateResquest(Associado associado) {
         this.id = associado.getId();
+        this.cpf = associado.getCpf();
     }
 
     public static List<AssociadoResponse> toListRequest(List<Associado> listAssociados) {

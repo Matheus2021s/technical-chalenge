@@ -23,10 +23,13 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SessaoDeVotacaoResponse {
     private Long id;
-    private PautaResponse pauta;
+    private PautaResponse pauta = new PautaResponse();
     private StatusSessao status;
     private LocalDateTime horarioInicial;
     private LocalDateTime horarioFinal;
+    private Integer quantidadeVotosSim;
+    private Integer quantidadeVotosNao;
+
     @Builder.Default
     private Set<VotoResponse> votos = new LinkedHashSet<>();
 
@@ -37,6 +40,8 @@ public class SessaoDeVotacaoResponse {
         this.horarioInicial = sessaoDeVotacao.getHorarioInicial();
         this.horarioFinal = sessaoDeVotacao.getHorarioFinal();
         this.votos = composeVotos(sessaoDeVotacao.getVotos());
+        this.quantidadeVotosSim = sessaoDeVotacao.getQuantidadeVotosSim();
+        this.quantidadeVotosNao = sessaoDeVotacao.getQuantidadeVotosNao();
     }
 
     private Set<VotoResponse> composeVotos(Set<Voto> votos) {
@@ -45,5 +50,17 @@ public class SessaoDeVotacaoResponse {
 
     public static List<SessaoDeVotacaoResponse> toListResponse(List<SessaoDeVotacao> listSessaoDeVotacaos) {
         return listSessaoDeVotacaos.stream().map(SessaoDeVotacaoResponse::new).collect(Collectors.toList());
+    }
+
+    public SessaoDeVotacao convertWithoutVotos() {
+        return SessaoDeVotacao.builder()
+                .id(getId())
+                .pauta(getPauta().convert())
+                .status(getStatus())
+                .horarioInicial(getHorarioInicial())
+                .horarioFinal(getHorarioFinal())
+                .quantidadeVotosNao(getQuantidadeVotosNao())
+                .quantidadeVotosSim(getQuantidadeVotosSim())
+                .build();
     }
 }

@@ -1,7 +1,6 @@
 package br.com.sicredi.techinicalchalenge.service;
 
 import br.com.sicredi.techinicalchalenge.model.Voto;
-import br.com.sicredi.techinicalchalenge.model.Voto;
 import br.com.sicredi.techinicalchalenge.repository.VotoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
