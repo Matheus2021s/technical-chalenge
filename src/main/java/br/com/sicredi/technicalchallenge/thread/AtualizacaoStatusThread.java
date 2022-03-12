@@ -49,28 +49,9 @@ public class AtualizacaoStatusThread implements Runnable {
             for (SessaoDeVotacao s : lista){
                 if (isSessaoDeVotacaoExpired(s)){
                     setStatusFechado(s);
-                    countVotos(s);
                 }
             }
         }
-    }
-
-    private void countVotos(SessaoDeVotacao s) {
-        int sim = 0;
-        int nao = 0;
-        List<Voto> list = this.votoRepository.findBySessaoDeVotacao(s);
-
-        for ( Voto v : list){
-            if (v.getValorVoto().equals(TipoValorVoto.SIM)){
-                sim ++;
-            }else {
-                nao ++;
-            }
-        }
-        s.setQuantidadeVotosSim(sim);
-        s.setQuantidadeVotosNao(nao);
-
-        this.sessaoDeVotacaoRepository.save(s);
     }
 
     private void setStatusFechado(SessaoDeVotacao s) {

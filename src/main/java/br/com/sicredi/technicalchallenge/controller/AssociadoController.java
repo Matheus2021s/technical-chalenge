@@ -21,7 +21,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("associado")
+@RequestMapping("api/associado")
 public class AssociadoController {
 
     public static final Logger LOGGER = LogManager.getLogger( AssociadoController.class.getName() );
@@ -32,7 +32,7 @@ public class AssociadoController {
         this.associadoService = associadoService;
     }
 
-    @GetMapping
+    @GetMapping("v1.0")
     public ResponseEntity<List<AssociadoResponse>> findAll( @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity);
@@ -44,7 +44,7 @@ public class AssociadoController {
         return ok;
     }
 
-    @GetMapping("{associadoId}")
+    @GetMapping({"v1.0/{associadoId}", "v2.0/{associadoId}"})
     public ResponseEntity<AssociadoResponse> findById(@PathVariable @Valid @NotEmpty Long associadoId,  @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info("Request: " + requestEntity);
@@ -67,7 +67,7 @@ public class AssociadoController {
         return notFound;
     }
 
-    @PostMapping
+    @PostMapping("v1.0")
     public ResponseEntity<AssociadoResponse> create(@RequestBody @Valid AssociadoResquest associadoResquest, @ApiIgnore RequestEntity requestEntity) throws URISyntaxException {
 
         LOGGER.info( "Request: " + requestEntity );
@@ -86,7 +86,7 @@ public class AssociadoController {
     }
 
 
-    @PutMapping
+    @PutMapping("v1.0")
     public ResponseEntity<AssociadoResponse> update(@RequestBody @Valid AssociadoUpdateResquest associadoUpdateResquest,   @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
@@ -119,7 +119,7 @@ public class AssociadoController {
     }
 
 
-    @DeleteMapping("{associadoId}")
+    @DeleteMapping("v1.0/{associadoId}")
     public ResponseEntity<?> delete(@PathVariable @Valid @NotEmpty  Long associadoId, @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );

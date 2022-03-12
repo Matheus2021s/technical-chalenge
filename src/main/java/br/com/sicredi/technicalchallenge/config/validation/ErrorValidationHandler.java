@@ -1,5 +1,9 @@
 package br.com.sicredi.technicalchallenge.config.validation;
 
+import br.com.sicredi.technicalchallenge.exception.AssociadoHabilitiadoAVotarException;
+import br.com.sicredi.technicalchallenge.exception.AssociadoNaoEncontradoException;
+import br.com.sicredi.technicalchallenge.exception.SessaoDevotacaoInexitenteException;
+import br.com.sicredi.technicalchallenge.exception.SessaoJaVotadaException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -22,7 +26,9 @@ public class ErrorValidationHandler {
     }
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler({
+            MethodArgumentNotValidException.class
+    })
     public List<ErrorDto> handle(MethodArgumentNotValidException e){
 
         List<ErrorDto> list  = new ArrayList<>();
@@ -35,10 +41,24 @@ public class ErrorValidationHandler {
 
           ErrorDto  errorDto = new ErrorDto(fieldError.getField(), message );
 
-          list.add( errorDto) ;
+          list.add( errorDto ) ;
 
         }
 
         return list;
+    }
+
+
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({
+            AssociadoNaoEncontradoException.class,
+            SessaoJaVotadaException.class,
+            AssociadoNaoEncontradoException.class,
+            SessaoDevotacaoInexitenteException.class
+        })
+    public ErrorResumedDto handleCustomExceptions(RuntimeException e){
+        String httpStatus = HttpStatus.BAD_REQUEST.value() + " - " + HttpStatus.BAD_REQUEST.getReasonPhrase();
+        return new ErrorResumedDto( httpStatus , e.getMessage() );
     }
 }

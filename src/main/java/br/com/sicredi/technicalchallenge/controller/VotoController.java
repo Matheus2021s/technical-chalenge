@@ -20,7 +20,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("voto")
+@RequestMapping("api/voto")
 public class VotoController {
 
     public static final Logger LOGGER = LogManager.getLogger( VotoController.class.getName() );
@@ -34,7 +34,7 @@ public class VotoController {
         this.associadoService = associadoService;
     }
 
-    @GetMapping
+    @GetMapping("v1.0")
     public ResponseEntity<List<VotoResponse>> findAll( @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity);
@@ -46,7 +46,7 @@ public class VotoController {
         return ok;
     }
 
-    @GetMapping("{votoId}")
+    @GetMapping("v1.0/{votoId}")
     public ResponseEntity<VotoResponse> findById(@PathVariable Long votoId,  @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info("Request: " + requestEntity);
@@ -69,7 +69,7 @@ public class VotoController {
         return notFound;
     }
 
-    @PostMapping
+    @PostMapping("v1.0")
     public ResponseEntity<VotoResponse> create(@RequestBody VotoResquest votoResquest,   @ApiIgnore RequestEntity requestEntity) throws URISyntaxException {
 
         LOGGER.info( "Request: " + requestEntity );
@@ -98,7 +98,7 @@ public class VotoController {
     }
 
 
-    @PutMapping
+    @PutMapping("v1.0")
     public ResponseEntity<VotoResponse> update(@RequestBody VotoUpdateResquest votoUpdateResquest,   @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
@@ -131,7 +131,7 @@ public class VotoController {
     }
 
 
-    @DeleteMapping("{votoId}")
+    @DeleteMapping("v1.0/{votoId}")
     public ResponseEntity<?> delete(@PathVariable Long votoId,   @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );

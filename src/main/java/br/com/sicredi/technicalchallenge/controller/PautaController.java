@@ -21,7 +21,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("pauta")
+@RequestMapping("api/pauta")
 public class PautaController {
 
     public static final Logger LOGGER = LogManager.getLogger( PautaController.class.getName() );
@@ -32,7 +32,7 @@ public class PautaController {
         this.pautaService = pautaService;
     }
 
-    @GetMapping
+    @GetMapping("v1.0")
     public ResponseEntity<List<PautaResponse>> findAll( @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity);
@@ -44,7 +44,7 @@ public class PautaController {
         return ok;
     }
 
-    @GetMapping("{pautaId}")
+    @GetMapping("v1.0/{pautaId}")
     public ResponseEntity<PautaResponse> findById(@PathVariable @Valid @NotEmpty Long pautaId, @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info("Request: " + requestEntity);
@@ -67,7 +67,7 @@ public class PautaController {
         return notFound;
     }
 
-    @PostMapping
+    @PostMapping("v1.0")
     public ResponseEntity<PautaResponse> create(@RequestBody @Valid PautaResquest pautaResquest,  @ApiIgnore RequestEntity requestEntity) throws URISyntaxException {
 
         LOGGER.info( "Request: " + requestEntity );
@@ -86,7 +86,7 @@ public class PautaController {
     }
 
 
-    @PutMapping
+    @PutMapping("v1.0")
     public ResponseEntity<PautaResponse> update(@RequestBody @Valid PautaUpdateResquest pautaUpdateResquest, @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
@@ -119,7 +119,7 @@ public class PautaController {
     }
 
 
-    @DeleteMapping("{pautaId}")
+    @DeleteMapping("v1.0/{pautaId}")
     public ResponseEntity<?> delete(@PathVariable @Valid @NotEmpty Long pautaId, @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );

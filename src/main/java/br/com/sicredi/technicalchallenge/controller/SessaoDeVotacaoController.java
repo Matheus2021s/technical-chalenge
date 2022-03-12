@@ -22,7 +22,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("sessao-de-votacao")
+@RequestMapping("api/sessao-de-votacao")
 public class SessaoDeVotacaoController {
 
     public static final Logger LOGGER = LogManager.getLogger( SessaoDeVotacaoController.class.getName() );
@@ -33,7 +33,7 @@ public class SessaoDeVotacaoController {
         this.sessaoDeVotacaoService = sessaoDeVotacaoService;
     }
 
-    @GetMapping
+    @GetMapping("v1.0")
     public ResponseEntity<List<SessaoDeVotacaoResponse>> findAll( @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity);
@@ -45,7 +45,7 @@ public class SessaoDeVotacaoController {
         return ok;
     }
 
-    @GetMapping("{sessaoDeVotacaoId}")
+    @GetMapping("v1.0/{sessaoDeVotacaoId}")
     public ResponseEntity<SessaoDeVotacaoResponse> findById(@PathVariable @Valid @NotEmpty Long sessaoDeVotacaoId,  @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info("Request: " + requestEntity);
@@ -68,7 +68,7 @@ public class SessaoDeVotacaoController {
         return notFound;
     }
 
-    @PostMapping
+    @PostMapping("v1.0")
     public ResponseEntity<SessaoDeVotacaoResponse> create(@RequestBody @Valid SessaoDeVotacaoResquest sessaoDeVotacaoResquest,  @ApiIgnore RequestEntity requestEntity) throws URISyntaxException {
 
         LOGGER.info( "Request: " + requestEntity );
@@ -87,7 +87,7 @@ public class SessaoDeVotacaoController {
     }
 
 
-    @PutMapping
+    @PutMapping("v1.0")
     public ResponseEntity<SessaoDeVotacaoResponse> update(@RequestBody @Valid SessaoDeVotacaoUpdateResquest sessaoDeVotacaoUpdateResquest,  @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
@@ -120,7 +120,7 @@ public class SessaoDeVotacaoController {
     }
 
 
-    @DeleteMapping("{sessaoDeVotacaoId}")
+    @DeleteMapping("v1.0/{sessaoDeVotacaoId}")
     public ResponseEntity<?> delete(@PathVariable @Valid @NotEmpty Long sessaoDeVotacaoId, @ApiIgnore RequestEntity requestEntity){
 
         LOGGER.info( "Request: " + requestEntity );
