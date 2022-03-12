@@ -1,10 +1,10 @@
-package br.com.sicredi.techinicalchalenge;
+package br.com.sicredi.technicalchallenge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TechinicalChalengeApplicationTests {
+class TechnicalChallengeApplicationTests {
 
     @Test
     void contextLoads() {
